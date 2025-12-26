@@ -1,0 +1,18 @@
+<?php
+
+use Core\App;
+use Core\Database;
+
+$db = App::resolve(Database::class);
+$recipes = $db->query("SELECT 
+        r.id, 
+        r.title, 
+        r.img, 
+        r.user_id, 
+        r.date, 
+        r.status, 
+        u.name AS user_name 
+    FROM recipes AS r 
+    JOIN users AS u ON r.user_id = u.id", [])->fetchAll();
+
+views("/admin/report/create.view.php", ['recipes' => $recipes]);

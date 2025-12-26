@@ -1,0 +1,52 @@
+<div class="container mt-4 card border-0">
+    <div class="card-header bg-dark bg-opacity-10 w-100 border-0">
+        <h5 class="fw-bold my-2">Recipes Report</h5>
+    </div>
+    <div class="table-responsive shadow p-3">
+        <div class="d-flex ">
+            <form action="" method="POST" class="row align-items-end m-2">
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold">Start Date</label>
+                    <input type="date" name="start_date" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold">End Date</label>
+                    <input type="date" name="end_date" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-filter me-1"></i> Apply Filter
+                    </button>
+                </div>
+            </form>
+        </div>
+        <table class="table table-hover align-middle mt-4">
+            <thead class="bg-light">
+                <tr>
+                    <th>Date</th>
+                    <th>Recipe</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($recipes as $recipe): ?>
+                    <tr>
+                        <td class=" small"><?= date('M d, Y', strtotime($recipe['date'])) ?></td>
+                        <td>
+                            <p class=" small fw-semibold"><?= htmlspecialchars($recipe['title']) ?></p>
+                        </td>
+                        <td>
+                            <?php if ($recipe['status'] == 'Approved'): ?>
+                                <span class="badge rounded-pill bg-success-subtle text-success px-3">Approved</span>
+                            <?php elseif ($recipe['status'] == 'Pending'): ?>
+                                <span class="badge rounded-pill bg-warning-subtle text-warning px-3">Pending</span>
+                            <?php else: ?>
+                                <span class="badge rounded-pill bg-danger-subtle text-danger px-3">Rejected</span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
