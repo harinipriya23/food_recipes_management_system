@@ -14,6 +14,6 @@ $recipes = $db->query("SELECT
         r.status, 
         u.name AS user_name 
     FROM recipes AS r 
-    JOIN users AS u ON r.user_id = u.id", [])->fetchAll();
+    JOIN users AS u ON r.user_id = u.id ORDER BY r.date DESC", [])->fetchAll();
 
 views('/admin/recipes/overview.view.php', ['recipes' => $recipes]);

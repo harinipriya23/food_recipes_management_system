@@ -12,11 +12,11 @@ class StatusService
     public function approveRecipe($id)
     {
 
-        $this->db->query("UPDATE recipes SET status = :status WHERE id= :id", [':status' => 'Approved', ':id' => $id]);
+        $this->db->query("UPDATE recipes SET status = :status WHERE id= :id", [':status' => 'approved', ':id' => $id]);
     }
     public function rejectRecipe($id)
     {
-        $this->db->query("UPDATE recipes SET status = :status WHERE id= :id", [':status' => 'Rejected', ':id' => $id]);
+        $this->db->query("UPDATE recipes SET status = :status WHERE id= :id", [':status' => 'rejected', ':id' => $id]);
     }
     public function approveComment($id)
     {

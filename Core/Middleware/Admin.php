@@ -6,8 +6,8 @@ class Admin
 {
     public static function handleAuth()
     {
-        if ($_SESSION['type'] !== 'admin') {
-            header('location: /food_recipes/login');
+        if (($_SESSION['type'] ?? '') !== 'admin') {
+            echo 'Authentication Forbbiden';
             exit();
         }
     }

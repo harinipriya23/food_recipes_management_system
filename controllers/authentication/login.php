@@ -17,5 +17,10 @@ if ($result['success'] === false) {
 setcookie("user", $_POST['username'], time() + 86400);
 Session::put('user', $_POST['username']);
 
-header('location: /food_recipes');
+if ($_SESSION['type'] === 'user') {
+    header('location: /food_recipes/dashboard');
+    exit();
+}
+
+header('location: /food_recipes/admin/dashboard ');
 exit();

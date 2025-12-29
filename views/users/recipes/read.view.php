@@ -14,7 +14,7 @@
                     </form>
                 </div>
                 <?php if (isset($_SESSION['user']) && $_SESSION['type'] === 'user'): ?>
-                    <a href="recipe/create" class="btn btn-outline-success btn-sm rounded-sm py-2 col-md-2">
+                    <a href="recipe" class="btn btn-outline-success btn-sm rounded-sm py-2 col-md-2">
                         <i class="bi bi-plus-square-fill mx-1"></i> Add New Recipe
                     </a>
                 <?php endif ?>

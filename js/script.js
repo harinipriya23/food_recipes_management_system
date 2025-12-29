@@ -19,7 +19,6 @@ $(document).ready(function () {
     }
     $("#ingredient-table").removeClass("d-none");
 
-    console.log(item);
     ingredients.push(item);
     addIngredientItem(item);
 
@@ -30,9 +29,15 @@ $(document).ready(function () {
   /* ------- ADD NEW RECIPE ITEM -------- */
   $("#recipeForm").submit(function (e) {
     e.preventDefault();
-    console.log("hi");
     clearErrors();
+
+    if ($("#ingredient-table tbody tr").length === 0) {
+      alert("Please add at least one ingredient.");
+      return;
+    }
+
     let data = {
+      recipeId: $("#recipe_id").val(),
       recipeTitle: $("#recipe-title").val(),
       recipeDescription: $("#recipe-description").val(),
       preTime: $("#pre-time").val(),
@@ -48,19 +53,21 @@ $(document).ready(function () {
     }
 
     let formData = new FormData(this);
-    ingredients.forEach((item, i) => {
-      formData.append(`ingredients[${i}][ingredient]`, item.ingredient);
-      formData.append(`ingredients[${i}][quantity]`, item.quantity);
-      formData.append(`ingredients[${i}][unit]`, item.unit);
-    });
+
+    let url =
+      data.recipeId != ""
+        ? "/food_recipes/recipe/update-recipe"
+        : "/food_recipes/recipe/add-new-recipe";
     console.log(formData);
-    addNewRecipe(formData);
+    addNewRecipe(formData, url);
   });
 
   /* ------- DELETE BUTTON -------- */
   $("#ingredient-table tbody").on("click", ".remove", function (e) {
     e.preventDefault();
-    $(this).closest("tr").remove();
+    let index = $(this).closest("tr").remove();
+    ingredients.splice(index, 1);
+
     resetIndex();
 
     if ($("#ingredient-table tbody tr").length == 0) {

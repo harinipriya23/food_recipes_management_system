@@ -36,12 +36,12 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 }
 
 if (!$isAjax) {
-    require 'views/partials/header.php';
-    require 'views/partials/navbar.php';
+    require 'controllers/partials/header.php';
+    require 'controllers/partials/navbar.php';
 }
 
 $router->route($uri, $method);
 
 if (!$isAjax) {
-    require base_path('/views/partials/footer.php');
+    require base_path('/controllers/partials/footer.php');
 }

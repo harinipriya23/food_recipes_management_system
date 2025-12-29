@@ -17,7 +17,7 @@
     </div>
     <div class="row g-4">
         <div class="col-md-3">
-            <div class="card border-0  border-start border-primary border-5 shadow-sm rounded-4 p-3 h-100 bg-primary bg-opacity-10 ">
+            <a href="report" class="text-decoration-none card border-0  border-start border-primary border-5 shadow-sm rounded-4 p-3 h-100 bg-primary bg-opacity-10 ">
                 <div class="d-flex align-items-center ">
                     <div class="text-primary rounded-3 p-3 me-3">
                         <i class="bi bi-journal-text fs-3"></i>
@@ -27,25 +27,25 @@
                         <h2 class="mb-0 fw-bold"><?= $recipes['total'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-md-3">
-            <div class="card border-0 border-start border-success border-5 shadow-sm rounded-3 p-3 h-100 bg-success bg-opacity-10">
+            <a href="report?status=approved" class="text-decoration-none card border-0 border-start border-success border-5 shadow-sm rounded-3 p-3 h-100 bg-success bg-opacity-10">
                 <div class="d-flex align-items-center">
                     <div class="text-success p-3 me-2">
                         <i class="bi bi-check-circle fs-3"></i>
                     </div>
-                    <div class="mx-4">
+                    <div class="mx-4 ">
                         <h6 class="text-muted mb-1 small fw-bold">Approved Recipes</h6>
                         <h2 class="mb-0 fw-bold text-success"><?= $recipes['approved'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-md-3">
-            <div class="card border-0  border-start border-warning border-5 shadow-sm rounded-4 p-3 h-100 bg-warning bg-opacity-10 ">
+            <a href="report?status=pending" class="text-decoration-none card border-0  border-start border-warning border-5 shadow-sm rounded-4 p-3 h-100 bg-warning bg-opacity-10 ">
                 <div class="d-flex align-items-center">
                     <div class="text-warning rounded-3 p-3 me-3">
                         <i class="bi bi-clock-history fs-3"></i>
@@ -55,21 +55,21 @@
                         <h2 class="mb-0 fw-bold text-warning"><?= $recipes['pending'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-md-3">
-            <div class="card border-0  border-start border-danger border-5 shadow-sm rounded-4 p-3 h-100 bg-danger bg-opacity-10 ">
+            <a href="report?status=rejected" class="card text-decoration-none border-0 border-start border-danger border-5 shadow-sm rounded-4 p-3 h-100 bg-danger bg-opacity-10 ">
                 <div class="d-flex align-items-center">
                     <div class="text-danger rounded-3 p-3 me-3">
                         <i class="bi bi-x-octagon fs-3"></i>
                     </div>
-                    <div class="mx-4">
+                    <div class="mx-4 text-decoration-none">
                         <h6 class="text-muted mb-1 small fw-bold">Rejected recipes</h6>
                         <h2 class="mb-0 fw-bold text-danger"><?= $recipes['rejected'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -82,7 +82,7 @@
     <!-- COMMENTS MANAGEMENT -->
     <div class="row g-4 mt-2">
         <div class="col-md-3">
-            <div class="card border-0  border-start border-primary border-5 shadow-sm rounded-4 p-3 h-100 bg-primary bg-opacity-10 ">
+            <a href="report-comments" class="text-decoration-none card border-0  border-start border-primary border-5 shadow-sm rounded-4 p-3 h-100 bg-primary bg-opacity-10 ">
                 <div class="d-flex align-items-center ">
                     <div class="text-primary rounded-3 p-3 me-3">
                         <i class="bi bi-journal-text fs-3"></i>
@@ -92,11 +92,11 @@
                         <h2 class="mb-0 fw-bold"><?= $comments['total'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-md-3">
-            <div class="card border-0 border-start border-success border-5 shadow-sm rounded-3 p-3 h-100 bg-success bg-opacity-10">
+            <a href="report-comments?status=approved" class="text-decoration-none card border-0 border-start border-success border-5 shadow-sm rounded-3 p-3 h-100 bg-success bg-opacity-10">
                 <div class="d-flex align-items-center">
                     <div class="text-success p-3 me-2">
                         <i class="bi bi-check-circle fs-3"></i>
@@ -106,11 +106,11 @@
                         <h2 class="mb-0 fw-bold text-success"><?= $comments['approved'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-md-3">
-            <div class="card border-0  border-start border-warning border-5 shadow-sm rounded-4 p-3 h-100 bg-warning bg-opacity-10 ">
+            <a href="report-comments?status=pending" class="text-decoration-none card border-0  border-start border-warning border-5 shadow-sm rounded-4 p-3 h-100 bg-warning bg-opacity-10 ">
                 <div class="d-flex align-items-center">
                     <div class="text-warning rounded-3 p-3 me-3">
                         <i class="bi bi-clock-history fs-3"></i>
@@ -120,11 +120,11 @@
                         <h2 class="mb-0 fw-bold text-warning"><?= $comments['pending'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-md-3">
-            <div class="card border-0  border-start border-danger border-5 shadow-sm rounded-4 p-3 h-100 bg-danger bg-opacity-10 ">
+            <a href="report-comments?status=rejected" class="text-decoration-none card border-0  border-start border-danger border-5 shadow-sm rounded-4 p-3 h-100 bg-danger bg-opacity-10 ">
                 <div class="d-flex align-items-center">
                     <div class="text-danger rounded-3 p-3 me-3">
                         <i class="bi bi-x-octagon fs-3"></i>
@@ -134,7 +134,7 @@
                         <h2 class="mb-0 fw-bold text-danger"><?= $comments['rejected'] ?></h2>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </main>

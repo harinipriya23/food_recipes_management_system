@@ -16,5 +16,6 @@ if ($result['success'] === false) {
     exit();
 }
 
-views('/users/recipes/details.view.php', ['success' => "Comment submitted successfully!", 'recipe' => $recipe, 'comments' => $comments]);
+header('location: /food_recipes/recipes');
+// views('/users/recipes/details.view.php', ['success' => "Comment submitted successfully!", 'recipe' => $recipe, 'comments' => $comments]);
 exit();

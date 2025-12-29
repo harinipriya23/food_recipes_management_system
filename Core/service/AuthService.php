@@ -13,7 +13,6 @@ class AuthService
     {
         $this->db = $db;
     }
-
     public function register($data)
     {
         $action = 'register';
@@ -38,7 +37,6 @@ class AuthService
             "SELECT name, mobile, username, password, role FROM users WHERE username = :username",
             [':username' => $data['username']]
         )->fetch();
-        Session::put('type', $user['role']);
         return ['success' => true];
     }
     public function login($data)

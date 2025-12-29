@@ -6,8 +6,8 @@ class User
 {
     public static function handleAuth()
     {
-        if ($_SESSION['type'] !== 'user') {
-            header('location: /food_recipes/login');
+        if (($_SESSION['type'] ?? '') !== 'user') {
+            echo 'Authentication Forbbiden';
             exit();
         }
     }

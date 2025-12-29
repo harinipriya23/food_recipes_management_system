@@ -1,7 +1,6 @@
 <?php
 
 use Core\App;
-use Core\Session;
 use Core\Database;
 use Core\Service\AuthService;
 

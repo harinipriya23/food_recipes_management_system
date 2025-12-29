@@ -19,9 +19,9 @@
                             <a href="recipe-details?id=<?= $recipe['id'] ?>" class="small text-decoration-none fw-semibold"><?= htmlspecialchars($recipe['title']) ?></a>
                         </td>
                         <td>
-                            <?php if ($recipe['status'] == 'Approved'): ?>
+                            <?php if ($recipe['status'] == 'approved'): ?>
                                 <span class="badge rounded-pill bg-success-subtle text-success px-3">Approved</span>
-                            <?php elseif ($recipe['status'] == 'Pending'): ?>
+                            <?php elseif ($recipe['status'] == 'pending'): ?>
                                 <span class="badge rounded-pill bg-warning-subtle text-warning px-3">Pending</span>
                             <?php else: ?>
                                 <span class="badge rounded-pill bg-danger-subtle text-danger px-3">Rejected</span>

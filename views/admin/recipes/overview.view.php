@@ -22,9 +22,9 @@
                         <td class="small text-muted text-capitalize"><?= $recipe['user_name'] ?></td>
                         <td class="small"><?= date('M d, Y', strtotime($recipe['date'])) ?></td>
                         <td>
-                            <?php if ($recipe['status'] == 'Approved'): ?>
+                            <?php if ($recipe['status'] == 'approved'): ?>
                                 <span class="badge rounded-pill bg-success-subtle text-success px-3">Approved</span>
-                            <?php elseif ($recipe['status'] == 'Pending'): ?>
+                            <?php elseif ($recipe['status'] == 'pending'): ?>
                                 <span class="badge rounded-pill bg-warning-subtle text-warning px-3">Pending</span>
                             <?php else: ?>
                                 <span class="badge rounded-pill bg-danger-subtle text-danger px-3">Rejected</span>
@@ -40,7 +40,7 @@
                                     <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm px-4">
                                         Reject
                                     </button>
-                                    <a href="/food_recipes/recipe/pdf?id=<?= $recipe['id'] ?>" class="btn btn-warning btn-sm flex-grow-1 px-4">
+                                    <a href="/food_recipes/recipe/pdf?id=<?= $recipe['id'] ?>" target="_blank" class="btn btn-warning btn-sm flex-grow-1 px-4">
                                         PDF
                                     </a>
                                 </form>

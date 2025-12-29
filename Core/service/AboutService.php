@@ -13,20 +13,21 @@ class AboutService
     }
     public function save($value)
     {
-        $existsId = $this->db->query("SELECT id FROM about LIMIT 1", [])->fetch();
+        $errors = [];
+        $existsData = $this->db->query("SELECT id, social_img, food_img FROM about LIMIT 1", [])->fetch();
 
         $data = [
             'subtitle' => trim($value['subtitle']),
             'description' => trim($value['description']),
         ];
-        if (!$existsId) {
+        if (!$existsData) {
             $errors = $this->validation($data);
         }
         if ($errors) {
             return ['success' => false, 'errors' => $errors];
         }
-        if ($existsId) {
-            $about_id = $existsId['id'];
+        if ($existsData) {
+            $about_id = $existsData['id'];
             $this->db->query(
                 "UPDATE about SET subtitle=:subtitle, description = :description WHERE id = :id",
                 [
@@ -46,22 +47,33 @@ class AboutService
             );
             $about_id = $this->db->lastInsertId();
         }
-        $social_img = $this->imgPath('social_img', $about_id, 'social_');
-        $food_img = $this->imgPath('food_img', $about_id, 'food_');
-        $this->db->query("UPDATE about SET social_img = :social_img, food_img = :food_img WHERE id = :id", [':social_img' => $social_img, ':food_img' => $food_img, ':id' => $about_id]);
+
+        if (isset($_FILES['social_img']) && $_FILES['social_img']['error'] === UPLOAD_ERR_OK) {
+            $social_img = $this->imgPath('social_img', $about_id, 'social_');
+            $this->db->query("UPDATE about SET social_img = :social_img WHERE id = :id", [':social_img' => $social_img, ':id' => $about_id]);
+        }
+        if (isset($_FILES['food_img']) && $_FILES['food_img']['error'] === UPLOAD_ERR_OK) {
+            $food_img = $this->imgPath('food_img', $about_id, 'food_');
+            $this->db->query("UPDATE about SET food_img = :food_img WHERE id = :id", [':food_img' => $food_img, ':id' => $about_id]);
+        }
+
         return ['success' => true];
     }
     private function imgPath($img, $id, $key)
     {
+        if (empty($_FILES[$img]['name'])) {
+            return null;
+        }
         var_dump($_FILES[$img]);
-        $name = $_FILES[$img]['name'];
         $temp = $_FILES[$img]['tmp_name'];
         $extension = strtolower(pathinfo($_FILES[$img]['name'], PATHINFO_EXTENSION));
 
         $renamed = $key . $id . "." . $extension;
         $uploadPath = base_path('uploads/features/') . $renamed;
-        move_uploaded_file($temp, $uploadPath);
-        return $renamed;
+        if (move_uploaded_file($temp, $uploadPath)) {
+            return $renamed;
+        }
+        return null;
     }
     private function validation($data)
     {

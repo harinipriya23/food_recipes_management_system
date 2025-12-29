@@ -1,12 +1,12 @@
 /* ------- ADD INGREDIENT ITEM -------- */
-function addIngredientItem($item) {
+function addIngredientItem(item) {
   $.ajax({
     type: "POST",
     headers: {
       "X-Requested-With": "XMLHttpRequest",
     },
     url: "/food_recipes/recipe/add-ingredient",
-    data: $item,
+    data: item,
     success: function (response) {
       $("#ingredient-table tbody").append(response);
       console.log(response);
@@ -19,13 +19,13 @@ function addIngredientItem($item) {
   });
 }
 /* ------- ADD NEW RECIPE -------- */
-function addNewRecipe($item) {
+function addNewRecipe(item, url) {
   $.ajax({
     type: "POST",
-    url: "/food_recipes/recipe/add-new-recipe",
+    url: url,
     processData: false,
     contentType: false,
-    data: $item,
+    data: item,
     success: function (response) {
       console.log(response);
       if (!response.success) {
@@ -48,27 +48,15 @@ function addNewRecipe($item) {
   });
 }
 /* ------- UPADATE ABOUT -------- */
-function updateAbout($item) {
+function updateAbout(item) {
   $.ajax({
     type: "POST",
     url: "/food_recipes/admin/about/update",
     processData: false,
     contentType: false,
-    data: $item,
+    data: item,
     success: function (response) {
       console.log(response);
-      // if (!response.success) {
-      //   let errors = response.errors;
-      //   console.log(response.errors);
-      //   $(".text-danger").addClass("d-none").html("");
-
-      //   for (let field in errors) {
-      //     $("." + field + "-err")
-      //       .removeClass("d-none")
-      //       .html(errors[field]);
-      //   }
-      //   return;
-      // }
       window.location.href = "/food_recipes/admin/dasboard";
     },
     error: function (res) {

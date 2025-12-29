@@ -14,5 +14,5 @@ if ($result['success'] === false) {
     exit();
 }
 
-header('location: /food_recipes/contact');
+header('location: /food_recipes/admin/contact');
 exit();
